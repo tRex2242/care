@@ -30,22 +30,68 @@ namespace care
             carTunSpeed = 15;
             isGameOver = false;
 
+            Game_over.Visible = false;
+
             roadlines = new PictureBox[] { polosa, polosa1, polosa2,
                 polosa3};
             enemys = new PictureBox[] { madara, obito, };
-            coins = new PictureBox[] {coin,coin1,coin2,};
+            coins = new PictureBox[] { coin, coin1 };
             random = new Random();
             collectedCoins = 0;
 
             gen_start_pos();
 
-
-
             car.Image = Properties.Resources.naruto;
 
             game_timer.Interval = 1000 / timerSpeed;
             game_timer.Start();
+        }
+        void is_get_coins()
+        {
+            int x = 0;
+            for (int i = 0; i < coins.Length; i++)
+            {
+                if (car.Bounds.IntersectsWith(coins[i].Bounds))
+                {
+                    collectedCoins++;
+                    x = random.Next(polosa4.Right, polosa5.Left - coins[i].Width);
+                    coins[i].Location = new Point(x, -coins[i].Height);
+                }
+            }
+            coin228text.Text = "Coins = " + collectedCoins;
+        }
 
+        bool chek_intersections()
+        {
+            for (int i = 0; i < enemys.Length; i++)
+            {
+                if (car.Bounds.IntersectsWith(enemys[i].Bounds))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        void gameover_actions()
+        {
+            game_timer.Stop();
+            Game_over.Visible = true;
+            car.Image = Properties.Resources.rasengan;
+
+            DialogResult result = MessageBox.Show(
+                "Хочешь сыграть еще раз?",
+                "Ты проиграл :(",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+            if(result == DialogResult.Yes)
+            {
+                init_game();
+            }
+            else
+            {
+                Close();
+            }
         }
         void move_enemys()
         {
@@ -67,11 +113,11 @@ namespace care
         void move_coins()
         {
             int x;
-            for(int i = 0; i < coins.Length; i++)
+            for (int i = 0; i < coins.Length; i++)
             {
-                if(coins[i].Top > this.Height)
+                if (coins[i].Top > this.Height)
                 {
-                    x = random.Next(polosa4.Right, polosa5.Left - 
+                    x = random.Next(polosa4.Right, polosa5.Left -
                         coins[i].Width);
                     coins[i].Location = new Point(x, -coins[i].Height);
                 }
@@ -88,7 +134,7 @@ namespace care
             {
                 if (roadlines[i].Top > this.Height)
                 {
-                    roadlines[i].Top = -roadlines[i].Height; 
+                    roadlines[i].Top = -roadlines[i].Height;
                 }
                 else
                 {
@@ -116,51 +162,63 @@ namespace care
             init_game();
         }
 
-        private void Form2_Load(object sender, EventArgs e)
-        {
 
-        }
-
-        private void pictureBox4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void coin1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void obito_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void game_timer_Tick(object sender, EventArgs e)
         {
             move_enemys();
             move_coins();
             move_lines();
+            is_get_coins();
+            isGameOver = chek_intersections();
+            if (isGameOver)
+            {
+                gameover_actions();
+            }
+        }
+
+        private void Form2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (!isGameOver)
+            {
+                switch (e.KeyCode)
+                {
+                    case Keys.Left:
+                        if (car.Left > polosa4.Right)
+                        {
+                            car.Left -= carTunSpeed;
+                        }
+                        break;
+                    case Keys.Right:
+                        if (car.Right < polosa5.Left)
+                        {
+                            car.Left += carTunSpeed;
+                        }
+                        break;
+                    case Keys.Up:
+
+                        if (gameSpeed < 11)
+                        {
+                            gameSpeed++;
+                        }
+
+                        break;
+                    case Keys.Down:
+
+                        if (gameSpeed > 8)
+                        {
+                            gameSpeed--;
+                        }
+
+
+                        break;
+                }
+            }
+        }
+
+        private void Game_over_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

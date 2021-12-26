@@ -31,9 +31,7 @@ namespace care
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
-            this.coin228text = new System.Windows.Forms.TextBox();
             this.game_timer = new System.Windows.Forms.Timer(this.components);
-            this.coin2 = new System.Windows.Forms.PictureBox();
             this.coin = new System.Windows.Forms.PictureBox();
             this.obito = new System.Windows.Forms.PictureBox();
             this.madara = new System.Windows.Forms.PictureBox();
@@ -45,7 +43,8 @@ namespace care
             this.polosa = new System.Windows.Forms.PictureBox();
             this.polosa4 = new System.Windows.Forms.PictureBox();
             this.polosa5 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.coin2)).BeginInit();
+            this.coin228text = new System.Windows.Forms.Label();
+            this.Game_over = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.coin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.obito)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.madara)).BeginInit();
@@ -59,30 +58,9 @@ namespace care
             ((System.ComponentModel.ISupportInitialize)(this.polosa5)).BeginInit();
             this.SuspendLayout();
             // 
-            // coin228text
-            // 
-            this.coin228text.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.coin228text.Location = new System.Drawing.Point(1, 12);
-            this.coin228text.Name = "coin228text";
-            this.coin228text.ReadOnly = true;
-            this.coin228text.Size = new System.Drawing.Size(80, 29);
-            this.coin228text.TabIndex = 19;
-            this.coin228text.Text = "Coin = 0";
-            // 
             // game_timer
             // 
             this.game_timer.Tick += new System.EventHandler(this.game_timer_Tick);
-            // 
-            // coin2
-            // 
-            this.coin2.Image = ((System.Drawing.Image)(resources.GetObject("coin2.Image")));
-            this.coin2.Location = new System.Drawing.Point(180, 162);
-            this.coin2.Name = "coin2";
-            this.coin2.Size = new System.Drawing.Size(49, 50);
-            this.coin2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.coin2.TabIndex = 4;
-            this.coin2.TabStop = false;
-            this.coin2.Click += new System.EventHandler(this.pictureBox4_Click);
             // 
             // coin
             // 
@@ -97,32 +75,30 @@ namespace care
             // obito
             // 
             this.obito.Image = ((System.Drawing.Image)(resources.GetObject("obito.Image")));
-            this.obito.Location = new System.Drawing.Point(56, 317);
+            this.obito.Location = new System.Drawing.Point(65, -38);
             this.obito.Name = "obito";
             this.obito.Size = new System.Drawing.Size(80, 156);
             this.obito.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.obito.TabIndex = 11;
             this.obito.TabStop = false;
-            this.obito.Click += new System.EventHandler(this.obito_Click);
             // 
             // madara
             // 
             this.madara.Image = ((System.Drawing.Image)(resources.GetObject("madara.Image")));
-            this.madara.Location = new System.Drawing.Point(378, 162);
+            this.madara.Location = new System.Drawing.Point(349, -3);
             this.madara.Name = "madara";
             this.madara.Size = new System.Drawing.Size(69, 165);
             this.madara.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.madara.TabIndex = 3;
             this.madara.TabStop = false;
-            this.madara.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
             // car
             // 
             this.car.BackColor = System.Drawing.Color.Transparent;
-            this.car.Image = global::care.Properties.Resources.naruto;
-            this.car.Location = new System.Drawing.Point(180, 331);
+            this.car.Image = ((System.Drawing.Image)(resources.GetObject("car.Image")));
+            this.car.Location = new System.Drawing.Point(175, 269);
             this.car.Name = "car";
-            this.car.Size = new System.Drawing.Size(142, 107);
+            this.car.Size = new System.Drawing.Size(123, 169);
             this.car.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.car.TabIndex = 0;
             this.car.TabStop = false;
@@ -136,12 +112,11 @@ namespace care
             this.coin1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.coin1.TabIndex = 10;
             this.coin1.TabStop = false;
-            this.coin1.Click += new System.EventHandler(this.coin1_Click);
             // 
             // polosa3
             // 
             this.polosa3.Image = ((System.Drawing.Image)(resources.GetObject("polosa3.Image")));
-            this.polosa3.Location = new System.Drawing.Point(249, 363);
+            this.polosa3.Location = new System.Drawing.Point(240, 346);
             this.polosa3.Name = "polosa3";
             this.polosa3.Size = new System.Drawing.Size(19, 110);
             this.polosa3.TabIndex = 8;
@@ -150,7 +125,7 @@ namespace care
             // polosa2
             // 
             this.polosa2.Image = ((System.Drawing.Image)(resources.GetObject("polosa2.Image")));
-            this.polosa2.Location = new System.Drawing.Point(249, 229);
+            this.polosa2.Location = new System.Drawing.Point(240, 229);
             this.polosa2.Name = "polosa2";
             this.polosa2.Size = new System.Drawing.Size(19, 128);
             this.polosa2.TabIndex = 7;
@@ -159,29 +134,27 @@ namespace care
             // polosa1
             // 
             this.polosa1.Image = ((System.Drawing.Image)(resources.GetObject("polosa1.Image")));
-            this.polosa1.Location = new System.Drawing.Point(249, 97);
+            this.polosa1.Location = new System.Drawing.Point(240, 97);
             this.polosa1.Name = "polosa1";
             this.polosa1.Size = new System.Drawing.Size(19, 126);
             this.polosa1.TabIndex = 6;
             this.polosa1.TabStop = false;
-            this.polosa1.Click += new System.EventHandler(this.pictureBox6_Click);
             // 
             // polosa
             // 
             this.polosa.Image = ((System.Drawing.Image)(resources.GetObject("polosa.Image")));
-            this.polosa.Location = new System.Drawing.Point(249, -59);
+            this.polosa.Location = new System.Drawing.Point(240, -59);
             this.polosa.Name = "polosa";
             this.polosa.Size = new System.Drawing.Size(19, 150);
             this.polosa.TabIndex = 5;
             this.polosa.TabStop = false;
-            this.polosa.Click += new System.EventHandler(this.pictureBox5_Click);
             // 
             // polosa4
             // 
             this.polosa4.BackColor = System.Drawing.Color.WhiteSmoke;
             this.polosa4.Location = new System.Drawing.Point(12, -3);
             this.polosa4.Name = "polosa4";
-            this.polosa4.Size = new System.Drawing.Size(15, 459);
+            this.polosa4.Size = new System.Drawing.Size(11, 459);
             this.polosa4.TabIndex = 14;
             this.polosa4.TabStop = false;
             // 
@@ -194,14 +167,35 @@ namespace care
             this.polosa5.TabIndex = 15;
             this.polosa5.TabStop = false;
             // 
+            // coin228text
+            // 
+            this.coin228text.AutoSize = true;
+            this.coin228text.Location = new System.Drawing.Point(29, 18);
+            this.coin228text.Name = "coin228text";
+            this.coin228text.Size = new System.Drawing.Size(46, 13);
+            this.coin228text.TabIndex = 20;
+            this.coin228text.Text = "Coin = 0";
+            // 
+            // Game_over
+            // 
+            this.Game_over.AutoSize = true;
+            this.Game_over.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Game_over.ForeColor = System.Drawing.Color.DarkRed;
+            this.Game_over.Location = new System.Drawing.Point(179, 164);
+            this.Game_over.Name = "Game_over";
+            this.Game_over.Size = new System.Drawing.Size(147, 31);
+            this.Game_over.TabIndex = 21;
+            this.Game_over.Text = "Game over";
+            this.Game_over.Click += new System.EventHandler(this.Game_over_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gray;
             this.ClientSize = new System.Drawing.Size(476, 450);
+            this.Controls.Add(this.Game_over);
             this.Controls.Add(this.coin228text);
-            this.Controls.Add(this.coin2);
             this.Controls.Add(this.coin);
             this.Controls.Add(this.obito);
             this.Controls.Add(this.madara);
@@ -215,8 +209,7 @@ namespace care
             this.Controls.Add(this.polosa5);
             this.Name = "Form2";
             this.Text = "Form2";
-            this.Load += new System.EventHandler(this.Form2_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.coin2)).EndInit();
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form2_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.coin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.obito)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.madara)).EndInit();
@@ -237,7 +230,6 @@ namespace care
 
         private System.Windows.Forms.PictureBox car;
         private System.Windows.Forms.PictureBox madara;
-        private System.Windows.Forms.PictureBox coin2;
         private System.Windows.Forms.PictureBox polosa;
         private System.Windows.Forms.PictureBox polosa1;
         private System.Windows.Forms.PictureBox polosa2;
@@ -247,7 +239,8 @@ namespace care
         private System.Windows.Forms.PictureBox coin;
         private System.Windows.Forms.PictureBox polosa4;
         private System.Windows.Forms.PictureBox polosa5;
-        private System.Windows.Forms.TextBox coin228text;
         private System.Windows.Forms.Timer game_timer;
+        private System.Windows.Forms.Label coin228text;
+        private System.Windows.Forms.Label Game_over;
     }
 }

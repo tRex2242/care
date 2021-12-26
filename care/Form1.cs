@@ -24,7 +24,11 @@ namespace care
 
         private void button1_Click(object sender, EventArgs e)
         {
-            new Form2().ShowDialog();
+            using(Form2 form = new Form2())
+            {
+                form.ShowDialog();
+            }
+            
         }
     }
 }
